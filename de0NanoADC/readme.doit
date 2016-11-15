@@ -1,0 +1,11 @@
+If you want to make use of the code in this folder, you need to:
+1) active the virtual python environment located in the ssd1306_8x64bit_driver/myhdl_10dev/bin folder
+2) cd to this folder: de0NanoADC
+3) edit the configuration variables in de0NanoADC_genModel (like sample sequence)
+4) generate myhdl model by running: python de0NanoADC_genModel.py
+5) this generates the rom model with the sample sequence...
+6) and the FSM of the ADC-controller.
+7) generate a trace-file by running: python de0NanoADC_genSim.py
+8) open the generated trace file (.vcd) with GTKwave.
+9) look at all the traces and remind yourself that this is not the correct way to verify a digital design.
+
