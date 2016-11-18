@@ -13,9 +13,10 @@ import numpy as np
 
 
 # 'my_funky_font.bmp' contains the graphics for the hex letters.
-im = Image.open('my_funky_font.bmp')
+#im = Image.open('my_funky_font.bmp')
+im = Image.open('klingon_font.bmp')
 
-p = np.array(im)_
+p = np.array(im)
 
 font = p[:,:,0]
 
@@ -36,14 +37,7 @@ for x in range(len(font[0])):
 # 
 f = open('funky_font_rom.py', 'w')
 
-f.write('from myhdl import *\n')
-
-f.write('def rom(dout, addr, CONTENT):\n')
-
-f.write('    @always_comb\n')
-f.write('    def read():\n')
-f.write('        dout.next = CONTENT[int(addr)]\n')
-f.write('    return read\n')
+f.write('from myhdl import *\n\n')
 
 f.write('CONTENT = (')
 for i in range(len(content_list)):
@@ -53,7 +47,16 @@ for i in range(len(content_list)):
     if i % 10 == 0:
         f.write('\n')
 f.write(')\n')
-f.write('\n')
+f.write('\n\n')
+
+f.write('def rom(dout, addr, CONTENT):\n')
+
+f.write('    @always_comb\n')
+f.write('    def read():\n')
+f.write('        dout.next = CONTENT[int(addr)]\n')
+f.write('    return read\n')
+
+
 
 f.write('dout = Signal(intbv(0)[8:])\n')
 
